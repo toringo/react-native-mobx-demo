@@ -20,7 +20,7 @@ const TabNavigation = TabNavigator({
     screen: BookPage,
   },
 }, {
-  initialRouteName: 'Home',
+  initialRouteName: 'Love',
   order: ['Home', 'Love', 'Book'],
   tabBarOptions: {
     inactiveTintColor: '#999A9B',
