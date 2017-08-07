@@ -1,5 +1,5 @@
 # react-native-mobx-demo
-## **涉及到： react-native, mobx, mobx-react， react-native-vector-icons, react-navigation**
+### **涉及到： react-native, mobx, mobx-react， react-native-vector-icons, react-navigation**
 
 
 ### 启动步骤
