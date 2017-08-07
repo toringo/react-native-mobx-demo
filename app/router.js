@@ -5,6 +5,7 @@ import HomePage from './view/Home';
 import LovePage from './view/Love';
 import BookPage from './view/Book';
 import DetailPage from './view/Detail';
+import Panels from './view/Panel';
 
 
 
@@ -20,7 +21,7 @@ const TabNavigation = TabNavigator({
     screen: BookPage,
   },
 }, {
-  initialRouteName: 'Love',
+  initialRouteName: 'Home',
   order: ['Home', 'Love', 'Book'],
   tabBarOptions: {
     inactiveTintColor: '#999A9B',
@@ -48,6 +49,9 @@ const TabNavigation = TabNavigator({
 const Navigation = StackNavigator({
   HomeScreen: {
     screen: TabNavigation,
+  },
+  Detail: {
+    screen: Panels,
   },
   DetailPage: {
     screen: DetailPage,

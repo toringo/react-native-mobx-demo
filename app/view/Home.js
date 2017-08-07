@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Image,
-  ImageBackground
+  ImageBackground,
+  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { observer } from 'mobx-react/native';
@@ -28,23 +29,24 @@ export default class Home extends Component {
     tabBarIcon: ({ tintColor }) => (<Icon name="ios-home" color={tintColor} size={22} />),
   }
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.wrap}>
         <ImageBackground
           style={styles.image}
           source={require('../image/bg.png')}
-          resizeMode="cover"
+          resizeMode="contain"
         >
           <View style={styles.extend}>
             <Text>{hostUser.user.name}-{hostUser.user.username}</Text>          
           </View>  
-          <View style={styles.container}>
-            <View style={styles.box}><Text style={styles.text}>逃生攻略</Text></View>
+          <View style={styles.container}>  
+            <View style={styles.box}><Text style={styles.text} onPress={ () => navigation.navigate('Detail') }>逃生攻略</Text></View>
             <View style={styles.box}><Text style={styles.text}>应急包</Text></View>
             <View style={styles.box}><Text style={styles.text}>救助设置</Text></View>
             <View style={styles.box}><Text style={styles.text}>避难点</Text></View>
           </View>
-        </ImageBackground>    
+        </ImageBackground>
       </View>
     );
   }
