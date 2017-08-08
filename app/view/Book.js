@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -22,6 +23,17 @@ export default class Book extends Component {
       alignSelf: 'center',
     },
     tabBarIcon: ({ tintColor }) => (<Icon name="ios-book" color={tintColor} size={22} />),
+  }
+  itemshorizonal = () => {
+    const items = [];
+    for (var i = 0; i < 10; i++) {
+       items[i] = (
+         <TouchableOpacity key={i} style={styles.horizontalitem}>
+           <Text style={styles.item}>{`horizontal${i}`}</Text>
+         </TouchableOpacity>
+       );
+    }
+    return items;
   }
   render() {
     return (
@@ -62,6 +74,9 @@ export default class Book extends Component {
             </View>
           </View>  
         </View>
+        <ScrollView key={'scrollView'} horizontal={true} style={ styles.horizontals }>
+          {this.itemshorizonal()}
+        </ScrollView>
         <View style={styles.panels}>
           <Text style={styles.item}>this is panels.</Text>
         </View>
@@ -129,5 +144,16 @@ const styles = StyleSheet.create({
   },
   item: {
     textAlign: 'center'
+  },
+  horizontals: {
+    marginTop: 20,
+    flexDirection: 'row',
+  },
+  horizontalitem: {
+    height: 120,
+    width: 100,
+    margin: 5,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
   }
 });
