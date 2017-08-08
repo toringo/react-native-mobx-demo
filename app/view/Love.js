@@ -22,8 +22,8 @@ export default class Love extends Component {
     showInput: false
   }
   static navigationOptions = {
-    title: '爱心救助',
-    tabBarLabel: '爱心救助',
+    title: 'Mobx',
+    tabBarLabel: 'MOBX',
     alignSelf: 'center',
     headerStyle: {
       height: 49,

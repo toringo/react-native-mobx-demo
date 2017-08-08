@@ -5,9 +5,13 @@ import {
   Text,
   ListView,
   View,
+  Alert,
+  AlertIOS,
+  ToastAndroid,
   Dimensions,
   RefreshControl,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Book from './Item';
@@ -42,8 +46,8 @@ export default class Panels extends Component {
     ]
   }
   static navigationOptions = {
-    title: '生存指南',
-    tabBarLabel: '生存指南',
+    title: '列表',
+    tabBarLabel: '列表',
     alignSelf: 'center',
     headerStyle: {
       height: 49,
@@ -69,11 +73,38 @@ export default class Panels extends Component {
           dataSource={this.state.dataSource.cloneWithRows(this.state.data)}
           renderRow={(rowData) => this.renderRow(rowData)}
         />
+        <CustomButton text='点击弹出默认Alert'
+          onPress={()=>Alert.alert('温馨提醒','确定退出吗?')}
+        />
+        <CustomButton text='点击弹出三个按钮的Alert'
+          onPress={()=>Alert.alert('温馨提醒','确定退出吗?',[
+            {text:'One',onPress:()=>ToastAndroid.show('你点击了One~',ToastAndroid.SHORT)},
+            {text:'Two',onPress:()=>ToastAndroid.show('你点击了Two~',ToastAndroid.SHORT)},
+            {text:'Three',onPress:()=>ToastAndroid.show('你点击了Three~',ToastAndroid.SHORT)}
+            ])}
+        />
+        <CustomButton text='弹出两个按钮的弹出框-输入框存在默认信息' onPress={()=>AlertIOS.prompt('温馨提醒','请输入相关信息',[
+           {text:'取消',onPress:()=>console.log('点击了取消'),style:'cancel'},
+           {text:'确定',onPress:()=>console.log('点击了确定'),style:'default'}
+          ], 'plain-text', '我是默认信息')}
+        />
       </View>
     );
   }
 }
 
+class CustomButton extends Component {
+  render() {
+    return (
+      <TouchableHighlight
+        style={styles.button}
+        underlayColor="#a5a5a5"
+        onPress={this.props.onPress}>
+        <Text style={styles.buttonText}>{this.props.text}</Text>
+      </TouchableHighlight>
+    );
+  }
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -85,6 +116,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  button: {
+    margin:5,
+    backgroundColor: 'white',
+    padding: 15,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#cdcdcd',
+  },
+  buttonText: {
+    color: '#666',
   },
   instructions: {
     textAlign: 'center',

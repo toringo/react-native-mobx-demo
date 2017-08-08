@@ -16,7 +16,7 @@ import hostUser from '../store/mobx';
 @observer
 export default class Home extends Component {
   static navigationOptions = {
-    title: '震援',
+    title: '首页',
     tabBarLabel: '首页',
     alignSelf: 'center',
     headerStyle: {
@@ -41,7 +41,7 @@ export default class Home extends Component {
             <Text>{hostUser.user.name}-{hostUser.user.username}</Text>          
           </View>  
           <View style={styles.container}>  
-            <View style={styles.box}><Text style={styles.text} onPress={ () => navigation.navigate('Detail') }>逃生攻略</Text></View>
+            <View style={styles.box}><Text style={styles.text} onPress={ () => navigation.navigate('Detail') }>读书列表</Text></View>
             <View style={styles.box}><Text style={styles.text}>应急包</Text></View>
             <View style={styles.box}><Text style={styles.text}>救助设置</Text></View>
             <View style={styles.box}><Text style={styles.text}>避难点</Text></View>

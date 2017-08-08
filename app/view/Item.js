@@ -6,7 +6,8 @@ import {
   Navigator,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
+  Alert
 } from 'react-native'
 // import Round from './Round'
 
@@ -40,9 +41,7 @@ export default class Book extends Component {
     const { author, grade, num, picture, publish, time, title } = this.props.data;
     return (
       <TouchableOpacity
-        onPress={() => {
-          this.onPress()
-        }}
+        onPress={()=>Alert.alert('标题','我是massage')}
       >
         <View style={[styles.item, this.props.style]}>
           <Image
